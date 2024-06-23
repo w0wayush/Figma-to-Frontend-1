@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import ATGLogo from "../assets/whole.png";
 import { MdOutlineArrowDropDown } from "react-icons/md";
+import SignupModal from "./SignupModal";
 
 export const Navbar = () => {
+  const [showSignupModal, setShowSignupModal] = useState(false);
+
+  const handleSignupModalClose = () => {
+    setShowSignupModal(false);
+  };
+
   return (
     <div className="w-full h-[72px] flex items-center justify-between px-20 bg-white shadow ">
       <div className="w-[162.57px]">
@@ -27,13 +34,21 @@ export const Navbar = () => {
       </div>
 
       <div className="w-[300px] h-[21px] flex items-center justify-end">
-        <p className="flex items-center gap-1">
-          Create account.{" "}
+        <button
+          type="button"
+          className="flex items-center justify-center"
+          onClick={() => setShowSignupModal(true)}
+        >
+          Create account.
           <span className="flex items-center text-blue-600 font-bold">
             It's Free!{" "}
           </span>
           <MdOutlineArrowDropDown />
-        </p>
+        </button>
+        <SignupModal
+          show={showSignupModal}
+          handleClose={handleSignupModalClose}
+        />
       </div>
     </div>
   );
