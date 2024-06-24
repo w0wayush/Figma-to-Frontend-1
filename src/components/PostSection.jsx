@@ -20,11 +20,18 @@ import Group3 from "../assets/group3.png";
 import Group4 from "../assets/group4.png";
 import GroupItem from "../smallComponents/GroupItem";
 import { RxCross2 } from "react-icons/rx";
+import CustomButton from "../smallComponents/CustomButton";
+import SignupModal from "./SignupModal";
 
 const ProjectSection = () => {
   const [showOptions, setShowOptions] = useState(false);
   const [selectedPost, setSelectedPost] = useState(null);
   const [isEdit, setEdit] = useState(false);
+  const [showSignupModal, setShowSignupModal] = useState(false);
+
+  const handleSignupModalClose = () => {
+    setShowSignupModal(false);
+  };
 
   const handleFocus = () => {
     setEdit(true);
@@ -40,9 +47,11 @@ const ProjectSection = () => {
   };
 
   return (
-    <div className="container mt-4">
+    <div className="container mt-4 relative">
       <div className="row">
-        <div className="col-md-8">
+        {/* Posts */}
+        <div className="col-md-8 md:col-md-12">
+          {/* Post 1 */}
           <div className="card mb-4">
             <img src={Post1} className="card-img-top" alt="Post 1" />
             <div className="card-body">
@@ -65,21 +74,30 @@ const ProjectSection = () => {
               <div className="flex justify-between mt-4">
                 <div className="flex items-center gap-3">
                   <img src={Profile1} alt="Profile" />
-                  <span className="font-bold text-[18px]">Sarthak Kamra</span>
+                  <div>
+                    <span className="font-bold text-[18px]">Sarthak Kamra</span>
+                    <p className="lg:hidden font-semibold">1.4k views</p>
+                  </div>
                 </div>
                 <div className="flex items-center gap-5 text-[#525252]">
-                  <p className="flex gap-2 items-center">
-                    <FaRegEye />
-                    1.4k views
+                  <p className="hidden lg:block ">
+                    <div className="flex gap-2 items-center ">
+                      <FaRegEye />
+                      1.4k views
+                    </div>
                   </p>
-                  <div className="bg-[#EDEEF0] p-2  cursor-pointer">
-                    <IoMdShare size={20} />
+                  <div className="bg-[#EDEEF0] lg:p-2 px-3 py-2 cursor-pointer">
+                    <div className="flex gap-2 ">
+                      <IoMdShare size={20} />
+                      <p className="block lg:hidden">Share</p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
+          {/* Post 2 */}
           <div className="card mb-4">
             <img src={Post2} className="card-img-top" alt="Post 2" />
             <div className="card-body">
@@ -106,21 +124,30 @@ const ProjectSection = () => {
               <div className="flex justify-between mt-4">
                 <div className="flex items-center gap-3">
                   <img src={Profile2}></img>{" "}
-                  <span className="font-bold text-[18px]">Sarah West</span>
+                  <div>
+                    <span className="font-bold text-[18px]">Sarah West</span>
+                    <p className="lg:hidden font-semibold">4.8k views</p>
+                  </div>
                 </div>
                 <div className="flex items-center gap-5 text-[#525252]">
-                  <p className="flex gap-2 items-center">
-                    <FaRegEye />
-                    1.4k views
+                  <p className="hidden lg:block ">
+                    <div className="flex gap-2 items-center ">
+                      <FaRegEye />
+                      4.8k views
+                    </div>
                   </p>
-                  <div className="bg-[#EDEEF0] p-2  cursor-pointer">
-                    <IoMdShare size={20} />
+                  <div className="bg-[#EDEEF0] lg:p-2 px-3 py-2 cursor-pointer">
+                    <div className="flex gap-2 ">
+                      <IoMdShare size={20} />
+                      <p className="block lg:hidden">Share</p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
+          {/* Post 3 */}
           <div className="card mb-4">
             <img src={Post3} className="card-img-top" alt="Post 2" />
             <div className="card-body">
@@ -148,8 +175,8 @@ const ProjectSection = () => {
                 </div>
               </div>
 
-              <div className="mt-4 ">
-                <button className="border w-[800px]  border-[#A9AEB8] text-red-600 p-3 rounded-xl">
+              <div className="mt-4">
+                <button className="border w-full border-[#A9AEB8] text-red-600 p-3 rounded-xl">
                   Visit Website
                 </button>
               </div>
@@ -157,21 +184,30 @@ const ProjectSection = () => {
               <div className="flex justify-between mt-4">
                 <div className="flex items-center gap-3">
                   <img src={Profile3}></img>{" "}
-                  <span className="font-bold text-[18px]">Sarah West</span>
+                  <div>
+                    <span className="font-bold text-[18px]">Sarah West</span>
+                    <p className="lg:hidden font-semibold">800 views</p>
+                  </div>
                 </div>
                 <div className="flex items-center gap-5 text-[#525252]">
-                  <p className="flex gap-2 items-center">
-                    <FaRegEye />
-                    1.4k views
+                  <p className="hidden lg:block ">
+                    <div className="flex gap-2 items-center ">
+                      <FaRegEye />
+                      800 views
+                    </div>
                   </p>
-                  <div className="bg-[#EDEEF0] p-2  cursor-pointer">
-                    <IoMdShare size={20} />
+                  <div className="bg-[#EDEEF0] lg:p-2 px-3 py-2 cursor-pointer">
+                    <div className="flex gap-2 ">
+                      <IoMdShare size={20} />
+                      <p className="block lg:hidden">Share</p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
+          {/* Post 4 */}
           <div className="card mb-4">
             <div className="card-body">
               <h5 className="card-title font-bold text-[18px]">💼️ Job</h5>
@@ -199,7 +235,7 @@ const ProjectSection = () => {
               </div>
 
               <div className="mt-4">
-                <button className="border w-[800px]  border-[#A9AEB8] text-green-600 p-3 rounded-xl mt-1">
+                <button className="border w-full border-[#A9AEB8] text-green-600 p-3 rounded-xl">
                   Apply For Timesjobs
                 </button>
               </div>
@@ -207,15 +243,23 @@ const ProjectSection = () => {
               <div className="flex justify-between mt-4">
                 <div className="flex items-center gap-3">
                   <img src={Profile4}></img>{" "}
-                  <span className="font-bold text-[18px]">Joseph Gray</span>
+                  <div>
+                    <span className="font-bold text-[18px]">Joseph Gray</span>
+                    <p className="lg:hidden font-semibold">1.7k views</p>
+                  </div>
                 </div>
                 <div className="flex items-center gap-5 text-[#525252]">
-                  <p className="flex gap-2 items-center">
-                    <FaRegEye />
-                    1.4k views
+                  <p className="hidden lg:block ">
+                    <div className="flex gap-2 items-center ">
+                      <FaRegEye />
+                      1.7k views
+                    </div>
                   </p>
-                  <div className="bg-[#EDEEF0] p-2  cursor-pointer">
-                    <IoMdShare size={20} />
+                  <div className="bg-[#EDEEF0] lg:p-2 px-3 py-2 cursor-pointer">
+                    <div className="flex gap-2 ">
+                      <IoMdShare size={20} />
+                      <p className="block lg:hidden">Share</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -223,9 +267,11 @@ const ProjectSection = () => {
           </div>
         </div>
 
-        <div className="col-md-4">
-          <div className="ml-12 mr-8 mt-8">
+        {/* Location Stuff */}
+        <div className="col-md-4 hidden lg:block">
+          <div className="ml-12 mr-8 mt-8 lg:ml-4 lg:mr-4">
             <div className="card-body">
+              {/* Location Text Field  */}
               <div className="mb-3 d-flex align-items-center justify-around">
                 <MdLocationOn className="me-2" size={24} />
                 <input
@@ -243,17 +289,11 @@ const ProjectSection = () => {
                 )}
               </div>
               <div className="border w-[90%] flex mx-auto"></div>
-              <div className="text-muted flex gap-2 mt-4">
-                <AiOutlineExclamationCircle size={28} />
-                <div>
-                  Your location will help us serve better and extend a
-                  personalized experience.
-                </div>
-              </div>
+              {/* Recommended Group Field */}
               <div className="flex flex-col mt-3 bg-white p-4 rounded-lg">
                 <div className="flex gap-2 items-center mb-4">
                   <img src={ThumbsUp} className="text-gray-500 w-5 h-5" />
-                  <p className="text-lg uppercase font-semibold">
+                  <p className="text-lg uppercase font-semibold lg:text-base">
                     Recommended Groups
                   </p>
                 </div>
@@ -263,7 +303,7 @@ const ProjectSection = () => {
                   <GroupItem imgSrc={Group3} groupName="MBA" />
                   <GroupItem imgSrc={Group4} groupName="Philosophy" />
                 </div>
-                <p className="text-blue-600 mt-4 cursor-pointer hover:underline text-right">
+                <p className="text-blue-600 mt-4 cursor-pointer hover:underline text-right lg:text-md">
                   See More...
                 </p>
               </div>
@@ -271,6 +311,13 @@ const ProjectSection = () => {
           </div>
         </div>
       </div>
+      <div className="lg:hidden fixed bottom-8 right-8 z-50">
+        <CustomButton />
+      </div>
+      <SignupModal
+        show={showSignupModal}
+        handleClose={handleSignupModalClose}
+      />
     </div>
   );
 };

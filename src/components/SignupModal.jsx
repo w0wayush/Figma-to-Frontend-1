@@ -8,6 +8,7 @@ import { AiOutlineClose } from "react-icons/ai";
 
 const SignupModal = ({ show, handleClose }) => {
   const [isSignIn, setIsSignIn] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const handleShowSignin = () => {
     setIsSignIn(true);
@@ -22,14 +23,20 @@ const SignupModal = ({ show, handleClose }) => {
   };
 
   return (
-    <Modal show={show} onHide={handleClose} centered>
+    <Modal size="sm" show={show} onHide={handleClose} centered>
       <div
         className={`${
-          isSignIn ? "w-[736px] h-[457px]" : "w-[750px] h-[490px]"
-        } bg-[#EFFFF4] border rounded-lg overflow-hidden relative`}
+          isSignIn
+            ? "lg:w-[736px] lg:h-[457px] sm:w-[450px]"
+            : "lg:w-[750px] lg:h-[490px] sm:w-[450px]"
+        } lg:block bg-white border rounded-lg overflow-hidden relative `}
       >
-        <div className="w-full h-12 bg-[#EFFFF4] rounded-t-lg flex items-center justify-center relative">
-          <p className="text-[#008A45] font-semibold text-sm">
+        <div
+          className={`${
+            isSignIn ? "w-full h-[450px]" : "w-full h-[450px]"
+          }w-full h-12 lg:bg-[#EFFFF4]  rounded-t-lg flex items-center justify-center relative`}
+        >
+          <p className="text-[#008A45] font-semibold text-sm hidden lg:block">
             Let's learn, share & inspire each other with our passion for
             computer engineering. {isSignIn ? "Sign in" : "Sign up"} now 🤘🏼
           </p>
@@ -41,7 +48,7 @@ const SignupModal = ({ show, handleClose }) => {
           </button>
         </div>
         <div className="flex bg-white">
-          <div className="w-[50%] p-6">
+          <div className="lg:w-[50%] w-[100%] p-6">
             <div className="flex justify-between items-center mb-4">
               <p className="text-2xl font-bold">
                 {isSignIn ? "Sign In" : "Create Account"}
@@ -83,9 +90,17 @@ const SignupModal = ({ show, handleClose }) => {
                 />
               )}
             </div>
-            <button className="w-full mt-4 py-2 bg-blue-600 text-white rounded-full font-semibold">
-              {isSignIn ? "Sign In" : "Create Account"}
-            </button>
+            <div className="flex items-center justify-between">
+              <button className="lg:w-full w-[50%] mt-4 py-2 bg-blue-600 text-white rounded-full font-semibold">
+                {isSignIn ? "Sign In" : "Create Account"}
+              </button>
+              <p
+                className="mt-4 hover:underline lg:hidden"
+                onClick={isSignIn ? handleShowSignup : handleShowSignin}
+              >
+                {isSignIn ? "or, Sign In" : "or, Create Account"}
+              </p>
+            </div>
 
             <div className="flex flex-col items-center space-y-2 mt-4">
               <div className="flex items-center justify-center font-medium border border-gray-300 p-2 rounded w-full">
@@ -100,6 +115,12 @@ const SignupModal = ({ show, handleClose }) => {
                 />
                 <p className="text-sm">Sign up with Google</p>
               </div>
+              {!isSignIn && (
+                <div className="text-[15px] leading-[16px] mt-4 text-center text-gray-500 lg:hidden mx-5 ">
+                  By signing up, you agree to our Terms & conditions, Privacy
+                  policy
+                </div>
+              )}
             </div>
 
             {isSignIn && (
@@ -109,33 +130,35 @@ const SignupModal = ({ show, handleClose }) => {
               </div>
             )}
           </div>
-          <div className="w-[50%] flex flex-col items-center justify-center p-6 font-medium">
-            <p className="text-sm w-full flex justify-end gap-1">
-              {isSignIn
-                ? "Don't have an account yet?"
-                : "Already have an account?"}{" "}
-              <span
-                className="text-blue-700 cursor-pointer"
-                onClick={isSignIn ? handleShowSignup : handleShowSignin}
-              >
-                {" "}
-                {isSignIn ? "Create new for free" : "Sign In"}
-              </span>
-            </p>
-            <div>
-              <img
-                src={SignupImg}
-                alt="Signup"
-                className="h-full w-full object-cover rounded-r-lg"
-              />
-            </div>
-            {!isSignIn && (
-              <div className="mt-2 text-[10px] leading-[16px] text-gray-500">
-                By signing up, you agree to our Terms & conditions, Privacy
-                policy
+          {windowWidth < 1000 && (
+            <div className="lg:w-[50%] sm:w-[0%] lg:flex-col items-center justify-center p-6 font-medium hidden  lg:block">
+              <p className="text-sm w-full flex justify-end gap-1">
+                {isSignIn
+                  ? "Don't have an account yet?"
+                  : "Already have an account?"}{" "}
+                <span
+                  className="text-blue-700 cursor-pointer"
+                  onClick={isSignIn ? handleShowSignup : handleShowSignin}
+                >
+                  {" "}
+                  {isSignIn ? "Create new for free" : "Sign In"}
+                </span>
+              </p>
+              <div>
+                <img
+                  src={SignupImg}
+                  alt="Signup"
+                  className="h-full w-full object-cover rounded-r-lg"
+                />
               </div>
-            )}
-          </div>
+              {!isSignIn && (
+                <div className="mt-2 text-[10px] leading-[16px] text-gray-500">
+                  By signing up, you agree to our Terms & conditions, Privacy
+                  policy
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </Modal>
