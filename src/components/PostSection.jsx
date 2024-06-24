@@ -4,7 +4,6 @@ import { FaRegEye, FaThumbsUp } from "react-icons/fa";
 import { IoMdShare } from "react-icons/io";
 import { MdDateRange, MdEdit, MdLocationOn } from "react-icons/md";
 import { IoBagOutline } from "react-icons/io5";
-import { AiOutlineExclamationCircle } from "react-icons/ai";
 import Post1 from "../assets/post1.png";
 import Post2 from "../assets/post2.png";
 import Post3 from "../assets/post3.png";
@@ -311,7 +310,10 @@ const ProjectSection = () => {
           </div>
         </div>
       </div>
-      <div className="lg:hidden fixed bottom-8 right-8 z-50">
+      <div
+        className="lg:hidden fixed bottom-8 right-8 z-50"
+        onClick={() => setShowSignupModal(true)}
+      >
         <CustomButton />
       </div>
       <SignupModal
