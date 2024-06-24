@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { BsThreeDots } from "react-icons/bs";
-import { FaRegEye } from "react-icons/fa";
+import { FaRegEye, FaThumbsUp } from "react-icons/fa";
 import { IoMdShare } from "react-icons/io";
 import { MdDateRange, MdEdit, MdLocationOn } from "react-icons/md";
 import { IoBagOutline } from "react-icons/io5";
@@ -12,10 +12,27 @@ import Profile1 from "../assets/profile1.png";
 import Profile2 from "../assets/profile2.png";
 import Profile3 from "../assets/profile3.png";
 import Profile4 from "../assets/profile4.png";
+import DropDownMenu from "../smallComponents/DropDownMenu";
+import ThumbsUp from "../assets/ThumbsUp.png";
+import Group1 from "../assets/group1.png";
+import Group2 from "../assets/group2.png";
+import Group3 from "../assets/group3.png";
+import Group4 from "../assets/group4.png";
+import GroupItem from "../smallComponents/GroupItem";
+import { RxCross2 } from "react-icons/rx";
 
 const ProjectSection = () => {
   const [showOptions, setShowOptions] = useState(false);
   const [selectedPost, setSelectedPost] = useState(null);
+  const [isEdit, setEdit] = useState(false);
+
+  const handleFocus = () => {
+    setEdit(true);
+  };
+
+  const handleBlur = () => {
+    setEdit(false);
+  };
 
   const handleOptionsClick = (postId) => {
     setSelectedPost(postId);
@@ -38,13 +55,7 @@ const ProjectSection = () => {
                   <div onClick={() => handleOptionsClick(1)}>
                     <BsThreeDots size={24} />
                   </div>
-                  {showOptions && selectedPost === 1 && (
-                    <div className="absolute bg-white border rounded-lg shadow-lg p-2 top-[25px] right-0 z-50 w-[150px] hover:bg-slate-500">
-                      <button className="block mb-1">Edit</button>
-                      <button className="block mb-1">Report</button>
-                      <button className="block">Option 3</button>
-                    </div>
-                  )}
+                  {showOptions && selectedPost === 1 && <DropDownMenu />}
                 </div>
               </div>
               <div className="mt-3 w-full text-[1.4rem] text-[#5C5C5C]">
@@ -84,13 +95,7 @@ const ProjectSection = () => {
                   <div onClick={() => handleOptionsClick(2)}>
                     <BsThreeDots size={24} />
                   </div>
-                  {showOptions && selectedPost === 2 && (
-                    <div className="absolute bg-white border rounded-lg shadow-lg p-2 top-[25px] right-0 z-50 w-[150px] hover:bg-slate-500">
-                      <button className="block mb-1">Edit</button>
-                      <button className="block mb-1">Report</button>
-                      <button className="block">Option 3</button>
-                    </div>
-                  )}
+                  {showOptions && selectedPost === 2 && <DropDownMenu />}
                 </div>
               </div>
 
@@ -128,13 +133,7 @@ const ProjectSection = () => {
                   <div onClick={() => handleOptionsClick(3)}>
                     <BsThreeDots size={24} />
                   </div>
-                  {showOptions && selectedPost === 3 && (
-                    <div className="absolute bg-white border rounded-lg shadow-lg p-2 top-[25px] right-0 z-50 w-[150px] hover:bg-slate-500">
-                      <button className="block mb-1">Edit</button>
-                      <button className="block mb-1">Report</button>
-                      <button className="block">Option 3</button>
-                    </div>
-                  )}
+                  {showOptions && selectedPost === 3 && <DropDownMenu />}
                 </div>
               </div>
 
@@ -184,13 +183,7 @@ const ProjectSection = () => {
                   <div onClick={() => handleOptionsClick(4)}>
                     <BsThreeDots size={24} />
                   </div>
-                  {showOptions && selectedPost === 4 && (
-                    <div className="absolute bg-white border rounded-lg shadow-lg p-2 top-[25px] right-0 z-50 w-[150px] hover:bg-slate-500">
-                      <button className="block mb-1">Edit</button>
-                      <button className="block mb-1">Report</button>
-                      <button className="block">Option 3</button>
-                    </div>
-                  )}
+                  {showOptions && selectedPost === 4 && <DropDownMenu />}
                 </div>
               </div>
 
@@ -206,7 +199,7 @@ const ProjectSection = () => {
               </div>
 
               <div className="mt-4">
-                <button className="border w-[800px]  border-[#A9AEB8] text-red-600 p-3 rounded-xl mt-1">
+                <button className="border w-[800px]  border-[#A9AEB8] text-green-600 p-3 rounded-xl mt-1">
                   Apply For Timesjobs
                 </button>
               </div>
@@ -231,17 +224,23 @@ const ProjectSection = () => {
         </div>
 
         <div className="col-md-4">
-          <div className="card">
+          <div className="ml-12 mr-8 mt-8">
             <div className="card-body">
-              <div className="mb-3 d-flex align-items-center justify-around ">
+              <div className="mb-3 d-flex align-items-center justify-around">
                 <MdLocationOn className="me-2" size={24} />
                 <input
                   type="text"
                   placeholder="Enter Your Location"
                   className="border-none outline-none flex-grow-1"
                   style={{ maxWidth: "calc(100% - 40px)" }}
+                  onFocus={handleFocus}
+                  onBlur={handleBlur}
                 />
-                <MdEdit className="ms-2" size={24} />
+                {!isEdit ? (
+                  <MdEdit className="ms-2" size={24} />
+                ) : (
+                  <RxCross2 className="ms-2" size={24} />
+                )}
               </div>
               <div className="border w-[90%] flex mx-auto"></div>
               <div className="text-muted flex gap-2 mt-4">
@@ -250,6 +249,23 @@ const ProjectSection = () => {
                   Your location will help us serve better and extend a
                   personalized experience.
                 </div>
+              </div>
+              <div className="flex flex-col mt-3 bg-white p-4 rounded-lg">
+                <div className="flex gap-2 items-center mb-4">
+                  <img src={ThumbsUp} className="text-gray-500 w-5 h-5" />
+                  <p className="text-lg uppercase font-semibold">
+                    Recommended Groups
+                  </p>
+                </div>
+                <div className="grid grid-cols-1 gap-4">
+                  <GroupItem imgSrc={Group1} groupName="Leisure" />
+                  <GroupItem imgSrc={Group2} groupName="Activism" />
+                  <GroupItem imgSrc={Group3} groupName="MBA" />
+                  <GroupItem imgSrc={Group4} groupName="Philosophy" />
+                </div>
+                <p className="text-blue-600 mt-4 cursor-pointer hover:underline text-right">
+                  See More...
+                </p>
               </div>
             </div>
           </div>

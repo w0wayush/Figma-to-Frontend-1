@@ -1,17 +1,23 @@
 import React, { useState } from "react";
+import { IoMdExit } from "react-icons/io";
 import { MdGroupAdd, MdOutlineArrowDropDown } from "react-icons/md";
 
 const PostBar = () => {
   const [selectedItem, setSelectedItem] = useState(0);
+  const [group, setGroup] = useState(false);
+
+  const handleGroup = () => {
+    setGroup(!group);
+  };
 
   const handleItemClick = (index) => {
     setSelectedItem(index);
   };
 
   return (
-    <div className="sticky top-0 z-50 bg-white border-b border-gray-300">
-      <div className="w-[1296px] mx-auto py-4 flex justify-between items-center">
-        <ul className="flex space-x-2 cursor-pointer">
+    <div className="sticky top-0 z-50 bg-white border-b border-gray-300 hidden lg:block">
+      <div className="w-full max-w-[1296px] mx-auto py-4 flex flex-wrap justify-between items-center px-4 sm:px-8">
+        <ul className="flex space-x-2 cursor-pointer overflow-x-auto">
           <li
             className={
               selectedItem === 0
@@ -78,18 +84,31 @@ const PostBar = () => {
             )}
           </li>
         </ul>
-        <div className="flex space-x-2">
+        <div className="flex space-x-2 mt-4 lg:mt-0">
           <button className="flex items-center gap-2 bg-slate-300 text-black p-2 px-3 rounded">
             Write a Post <MdOutlineArrowDropDown />
           </button>
-          <button className="flex items-center gap-2 bg-blue-500 text-white p-2 px-3 rounded">
-            <div className="flex items-center gap-2">
-              <MdGroupAdd /> Join Group
-            </div>
+          <button
+            className={`flex items-center gap-2 p-2 px-3 rounded ${
+              !group
+                ? "bg-blue-500 text-white"
+                : "bg-white text-gray-800 border border-[#989899]"
+            }`}
+            onClick={handleGroup}
+          >
+            {!group ? (
+              <span className="flex items-center gap-2">
+                <MdGroupAdd /> Join Group
+              </span>
+            ) : (
+              <span className="flex items-center gap-2">
+                <IoMdExit size={24} style={{ color: "gray" }} /> Leave Group
+              </span>
+            )}
           </button>
         </div>
       </div>
-      <div className="border border-gray-400 w-[1296px] mx-auto"></div>
+      <div className="border border-gray-400 w-full max-w-[1296px] mx-auto"></div>
     </div>
   );
 };

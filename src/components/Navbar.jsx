@@ -11,12 +11,12 @@ export const Navbar = () => {
   };
 
   return (
-    <div className="w-full h-[72px] flex items-center justify-between px-20 bg-white shadow ">
-      <div className="w-[162.57px]">
-        <img src={ATGLogo} alt="Logo" />
+    <div className="hidden md:flex w-full h-[72px] items-center justify-between px-4 sm:px-10 lg:px-20 bg-white shadow">
+      <div className="w-[100px] sm:w-[130px] md:w-[150px] lg:w-[162.57px]">
+        <img src={ATGLogo} alt="Logo" className="w-full" />
       </div>
 
-      <div className="w-[380px] h-[42px] flex items-center justify-between border rounded-full bg-[#F2F2F2] px-4">
+      <div className="flex items-center justify-center w-[150px] sm:w-[250px] md:w-[350px] lg:w-[380px] h-[42px] border rounded-full bg-[#F2F2F2] px-2 sm:px-4">
         <button type="submit" className="flex items-center justify-center">
           <img
             alt="Search"
@@ -26,24 +26,24 @@ export const Navbar = () => {
           />
         </button>
         <input
-          className="w-[300px] h-full bg-[#F2F2F2] border-none outline-none placeholder-gray-500"
+          className="w-[100px] sm:w-[200px] md:w-[300px] h-full bg-[#F2F2F2] border-none outline-none placeholder-gray-500"
           type="search"
           placeholder="Search for your favorite groups in ATG"
           aria-label="Search"
         />
       </div>
 
-      <div className="w-[300px] h-[21px] flex items-center justify-end">
+      <div className="w-[150px] sm:w-[200px] md:w-[250px] lg:w-[300px] h-[21px] flex items-center justify-end">
         <button
           type="button"
-          className="flex items-center justify-center"
+          className="flex items-center justify-center gap-1"
           onClick={() => setShowSignupModal(true)}
         >
           Create account.
           <span className="flex items-center text-blue-600 font-bold">
             It's Free!{" "}
           </span>
-          <MdOutlineArrowDropDown />
+          <MdOutlineArrowDropDown size={28} />
         </button>
         <SignupModal
           show={showSignupModal}
