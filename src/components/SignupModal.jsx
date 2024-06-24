@@ -23,18 +23,16 @@ const SignupModal = ({ show, handleClose }) => {
   };
 
   return (
-    <Modal size="sm" show={show} onHide={handleClose} centered>
+    <Modal show={show} onHide={handleClose} centered>
       <div
         className={`${
           isSignIn
-            ? "lg:w-[736px] lg:h-[457px] sm:w-[450px]"
-            : "lg:w-[750px] lg:h-[490px] sm:w-[450px]"
+            ? "lg:w-[736px] lg:h-[457px] sm:w-[490px]"
+            : "lg:w-[750px] lg:h-[490px] sm:w-[490px]"
         } lg:block bg-white border rounded-lg overflow-hidden relative `}
       >
         <div
-          className={`${
-            isSignIn ? "w-full h-[450px]" : "w-full h-[450px]"
-          }w-full h-12 lg:bg-[#EFFFF4]  rounded-t-lg flex items-center justify-center relative`}
+          className={`w-full h-12 lg:bg-[#EFFFF4]  rounded-t-lg flex items-center justify-center relative`}
         >
           <p className="text-[#008A45] font-semibold text-sm hidden lg:block">
             Let's learn, share & inspire each other with our passion for
@@ -130,35 +128,33 @@ const SignupModal = ({ show, handleClose }) => {
               </div>
             )}
           </div>
-          {windowWidth < 1000 && (
-            <div className="lg:w-[50%] sm:w-[0%] lg:flex-col items-center justify-center p-6 font-medium hidden  lg:block">
-              <p className="text-sm w-full flex justify-end gap-1">
-                {isSignIn
-                  ? "Don't have an account yet?"
-                  : "Already have an account?"}{" "}
-                <span
-                  className="text-blue-700 cursor-pointer"
-                  onClick={isSignIn ? handleShowSignup : handleShowSignin}
-                >
-                  {" "}
-                  {isSignIn ? "Create new for free" : "Sign In"}
-                </span>
-              </p>
-              <div>
-                <img
-                  src={SignupImg}
-                  alt="Signup"
-                  className="h-full w-full object-cover rounded-r-lg"
-                />
-              </div>
-              {!isSignIn && (
-                <div className="mt-2 text-[10px] leading-[16px] text-gray-500">
-                  By signing up, you agree to our Terms & conditions, Privacy
-                  policy
-                </div>
-              )}
+          <div className="lg:w-[50%] sm:w-[0%] lg:flex-col items-center justify-center p-6 font-medium hidden  lg:block">
+            <p className="text-sm w-full flex justify-end gap-1">
+              {isSignIn
+                ? "Don't have an account yet?"
+                : "Already have an account?"}{" "}
+              <span
+                className="text-blue-700 cursor-pointer"
+                onClick={isSignIn ? handleShowSignup : handleShowSignin}
+              >
+                {" "}
+                {isSignIn ? "Create new for free" : "Sign In"}
+              </span>
+            </p>
+            <div>
+              <img
+                src={SignupImg}
+                alt="Signup"
+                className="h-full w-full object-cover rounded-r-lg"
+              />
             </div>
-          )}
+            {!isSignIn && (
+              <div className="mt-2 text-[10px] leading-[16px] text-gray-500">
+                By signing up, you agree to our Terms & conditions, Privacy
+                policy
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </Modal>
