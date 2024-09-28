@@ -1,105 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="stylesheet" href="style.css" />
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Event Showcase</title>
-    <style>
-      body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        margin: 0;
-        padding: 20px;
-        box-sizing: border-box;
-        background-color: #f0f4f8;
-        color: #333;
-      }
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        background-color: white;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      }
-      .navbar {
-        display: flex;
-        gap: 10px;
-        margin-bottom: 20px;
-        background-color: #e9ecef;
-        padding: 10px;
-        border-radius: 5px;
-      }
-      .navbar button {
-        padding: 10px 15px;
-        cursor: pointer;
-        background-color: #f8f9fa;
-        border: none;
-        border-radius: 5px;
-        transition: background-color 0.3s, color 0.3s;
-      }
-      .navbar button:hover {
-        background-color: #00b2ce;
-        color: white;
-      }
-      .year-selection {
-        margin-bottom: 20px;
-      }
-      .year-group {
-        display: inline-block;
-        margin-right: 10px;
-        margin-bottom: 10px;
-      }
-      .year-group select {
-        padding: 5px;
-        border-radius: 4px;
-        border: 1px solid #ced4da;
-      }
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-bottom: 20px;
-        box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
-      }
-      th,
-      td {
-        border: 1px solid #dee2e6;
-        padding: 12px;
-        text-align: left;
-      }
-      th {
-        background-color: #e9ecef;
-        font-weight: bold;
-      }
-      .photos {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
-      }
-      .photo-container {
-        overflow: hidden;
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      }
-      .photos img {
-        width: 100%;
-        height: 50%;
-        border-radius: 20px;
-        object-fit: cover;
-        transition: transform 0.3s ease;
-      }
-      .photos img:hover {
-        transform: scale(1.02);
-      }
-      .active {
-        background-color: #00b2ce !important;
-        color: white !important;
-      }
-      h2,
-      h3 {
-        color: #343a40;
-        margin-top: 0;
-      }
-    </style>
   </head>
   <body>
     <div class="container">
@@ -142,16 +48,37 @@
         MoUs: {
           2024: {
             tableData: [
-              ["Company A", "Project X", "Ongoing"],
-              ["University B", "Research Y", "Completed"],
-              ["Institute C", "Collaboration Z", "Planned"],
+              [
+                "1",
+                "EARLYRISE Pvt,Ltd, Indiranagar, Banglore-560038 ",
+                "3 Years: 23/12/2019 to 22/12/2022",
+                "To Explore needs for creation of large reservoir of highly qualified work force in all fields related to computer science and technology.",
+              ],
+              [
+                "2",
+                "EARLYRISE Pvt,Ltd, Indiranagar, Banglore-560038 ",
+                "3 Years: 23/12/2019 to 22/12/2022",
+                "To Explore needs for creation of large reservoir of highly qualified work force in all fields related to computer science and technology.",
+              ],
+              [
+                "3",
+                "EARLYRISE Pvt,Ltd, Indiranagar, Banglore-560038 ",
+                "3 Years: 23/12/2019 to 22/12/2022",
+                "To Explore needs for creation of large reservoir of highly qualified work force in all fields related to computer science and technology.",
+              ],
+              [
+                "4",
+                "EARLYRISE Pvt,Ltd, Indiranagar, Banglore-560038 ",
+                "3 Years: 23/12/2019 to 22/12/2022",
+                "To Explore needs for creation of large reservoir of highly qualified work force in all fields related to computer science and technology.",
+              ],
             ],
             photos: [
-              "./assets/mou1.jpg",
-              "./assets/mou2.jpg",
+              "./assets/mou5.jpg",
               "./assets/mou3.jpg",
-              "./assets/mou1.jpg",
-              "./assets/mou2.jpg",
+              "./assets/mou3.jpg",
+              "./assets/mou5.jpg",
+              "./assets/mou5.jpg",
               "./assets/mou3.jpg",
             ],
           },
@@ -161,7 +88,7 @@
               ["Organization E", "Program N", "Ongoing"],
             ],
             photos: [
-              "./assets/mou4.jpg",
+              "./assets/mou8.jpg",
               "./assets/mou5.jpg",
               "./assets/mou3.jpg",
               "./assets/mou1.jpg",
@@ -174,44 +101,56 @@
               ["Institute F", "Project Q", "Completed"],
               ["Company G", "Innovation P", "Ongoing"],
             ],
-            photos: ["./assets/mou6.jpg", "./assets/mou1.jpg"],
+            photos: ["./assets/mou7.jpg", "./assets/mou1.jpg"],
           },
           "2019-2018": {
             tableData: [
               ["University H", "Study K", "Completed"],
               ["Company I", "Development L", "Planned"],
             ],
-            photos: ["./assets/mou2.jpg", "./assets/mou3.jpg"],
+            photos: ["./assets/mou7.jpg", "./assets/mou3.jpg"],
           },
           "2017-2016": {
             tableData: [
               ["Institute J", "Collaboration R", "Ongoing"],
               ["Company K", "Project T", "Completed"],
             ],
-            photos: ["./assets/mou4.jpg", "./assets/mou5.jpg"],
+            photos: ["./assets/mou8.jpg", "./assets/mou5.jpg"],
           },
           "2015-2014": {
             tableData: [
               ["University L", "Research U", "Completed"],
               ["Company M", "Initiative V", "Ongoing"],
             ],
-            photos: ["./assets/mou6.jpg", "./assets/mou1.jpg"],
+            photos: ["./assets/mou7.jpg", "./assets/mou1.jpg"],
           },
           "2013-2012": {
             tableData: [
               ["Company N", "Development W", "Completed"],
               ["Institute O", "Collaboration X", "Planned"],
             ],
-            photos: ["./assets/mou2.jpg", "./assets/mou3.jpg"],
+            photos: ["./assets/mou7.jpg", "./assets/mou3.jpg"],
           },
         },
         IndustrialVisits: {
           2024: {
             tableData: [
-              ["Factory X", "15 Jan 2024", "30 students"],
-              ["Company Y", "22 Feb 2024", "25 students"],
+              [
+                "1.",
+                "Cognizant, Hinjewadi",
+                "29/01/2020",
+                "17",
+                "How Cognizant perform CSR Activity to contribute towards the society.",
+              ],
+              [
+                "2.",
+                "Cognizant, Hinjewadi",
+                "29/01/2020",
+                "17",
+                "How Cognizant perform CSR Activity to contribute towards the society.",
+              ],
             ],
-            photos: ["./assets/iv1.jpg", "./assets/iv2.jpg"],
+            photos: ["./assets/iv9.jpg", "./assets/iv2.jpg"],
           },
           "2023-2022": {
             tableData: [
@@ -225,14 +164,14 @@
               ["Company C", "12 Jun 2021", "28 students"],
               ["Factory D", "19 Nov 2020", "33 students"],
             ],
-            photos: ["./assets/iv5.jpg", "./assets/iv6.jpg"],
+            photos: ["./assets/iv7.jpg", "./assets/iv8.jpg"],
           },
           "2019-2018": {
             tableData: [
               ["Plant E", "3 Jul 2019", "22 students"],
               ["Factory F", "25 Aug 2018", "30 students"],
             ],
-            photos: ["./assets/iv1.jpg", "./assets/iv2.jpg"],
+            photos: ["./assets/iv7.jpg", "./assets/iv2.jpg"],
           },
           "2017-2016": {
             tableData: [
@@ -246,65 +185,93 @@
               ["Plant I", "6 Apr 2015", "32 students"],
               ["Factory J", "20 May 2014", "29 students"],
             ],
-            photos: ["./assets/iv5.jpg", "./assets/iv6.jpg"],
+            photos: ["./assets/iv9.jpg", "./assets/iv8.jpg"],
           },
           "2013-2012": {
             tableData: [
               ["Company K", "17 Jun 2013", "35 students"],
               ["Factory L", "10 Dec 2012", "30 students"],
             ],
-            photos: ["./assets/iv1.jpg", "./assets/iv2.jpg"],
+            photos: ["./assets/iv7.jpg", "./assets/iv2.jpg"],
           },
         },
         ExpertLectures: {
           2024: {
             tableData: [
-              ["Dr. Smith", "AI in Industry", "10 Mar 2024"],
-              ["Prof. Johnson", "Future of IoT", "5 Apr 2024"],
+              [
+                "1.",
+                "I became an Engineer. Are you going to be One?",
+                "Pavneet Singh",
+                "Placement",
+                "06/06/2020 to 06/06/2020",
+                "70",
+              ],
+              [
+                "2.",
+                "I became an Engineer. Are you going to be One?",
+                "Pavneet Singh",
+                "Placement",
+                "06/06/2020 to 06/06/2020",
+                "70",
+              ],
             ],
-            photos: ["./assets/exl1.jpg", "./assets/exl2.jpg"],
+            photos: ["./assets/exl9.jpg", "./assets/exl2.jpg"],
           },
           "2023-2022": {
             tableData: [
               ["Dr. Brown", "Blockchain Revolution", "18 Feb 2023"],
               ["Prof. White", "Cybersecurity in 2022", "20 May 2022"],
             ],
-            photos: ["./assets/exl3.jpg", "./assets/exl4.jpg"],
+            photos: ["./assets/exl8.jpg", "./assets/exl9.jpg"],
           },
           "2021-2020": {
             tableData: [
               ["Dr. Green", "Machine Learning Trends", "22 Jul 2021"],
               ["Prof. Blue", "Data Science Applications", "16 Oct 2020"],
             ],
-            photos: ["./assets/exl5.jpg", "./assets/exl6.jpg"],
+            photos: ["./assets/exl5.jpg", "./assets/exl10.jpg"],
           },
           "2019-2018": {
             tableData: [
               ["Dr. Black", "Quantum Computing", "10 Nov 2019"],
               ["Prof. Grey", "Advances in AI", "3 Dec 2018"],
             ],
-            photos: ["./assets/exl1.jpg", "./assets/exl2.jpg"],
+            photos: ["./assets/exl9.jpg", "./assets/exl2.jpg"],
           },
           "2017-2016": {
             tableData: [
               ["Dr. Violet", "Cloud Computing", "15 Jun 2017"],
               ["Prof. Pink", "Big Data Analytics", "8 Mar 2016"],
             ],
-            photos: ["./assets/exl3.jpg", "./assets/exl4.jpg"],
+            photos: ["./assets/exl8.jpg", "./assets/exl9.jpg"],
           },
           "2015-2014": {
             tableData: [
               ["Dr. Red", "Robotics in Manufacturing", "12 Oct 2015"],
               ["Prof. Yellow", "Digital Transformation", "25 Apr 2014"],
             ],
-            photos: ["./assets/exl5.jpg", "./assets/exl6.jpg"],
+            photos: ["./assets/exl5.jpg", "./assets/exl10.jpg"],
           },
           "2013-2012": {
             tableData: [
-              ["Dr. Orange", "Internet of Things", "19 Feb 2013"],
-              ["Prof. Cyan", "Autonomous Systems", "30 Jun 2012"],
+              [
+                "1.",
+                "I became an Engineer. Are you going to be One?",
+                "Pavneet Singh",
+                "Placement",
+                "06/06/2020 to 06/06/2020",
+                "70",
+              ],
+              [
+                "2.",
+                "I became an Engineer. Are you going to be One?",
+                "Pavneet Singh",
+                "Placement",
+                "06/06/2020 to 06/06/2020",
+                "70",
+              ],
             ],
-            photos: ["./assets/exl1.jpg", "./assets/exl2.jpg"],
+            photos: ["./assets/exl9.jpg", "./assets/exl2.jpg"],
           },
         },
       };
@@ -344,26 +311,51 @@
         let headers;
         switch (currentTab) {
           case "MoUs":
-            headers = ["Organization", "Project", "Status"];
+            headers = [
+              "No. of Live MOUs",
+              "Name of Company/Organization ",
+              "Duration",
+              "Objectives",
+            ];
             break;
           case "IndustrialVisits":
-            headers = ["Company", "Date", "Participants"];
+            headers = [
+              "Sr. No.",
+              "Name of the Industry",
+              "Date of Visit",
+              "Number of Students Visited",
+              "Objectives of the Visit",
+            ];
             break;
           case "ExpertLectures":
-            headers = ["Speaker", "Topic", "Date"];
+            headers = [
+              "Sr. No.",
+              "Title",
+              "Resource Person Details",
+              "Category",
+              "Date",
+              "No. of Participants",
+            ];
             break;
         }
 
         table.innerHTML = `
-                <tr>${headers.map((h) => `<th>${h}</th>`).join("")}</tr>
-                ${data
-                  .map(
-                    (row) => `
-                    <tr>${row.map((cell) => `<td>${cell}</td>`).join("")}</tr>
-                `
-                  )
-                  .join("")}
-            `;
+                            <tr>${headers
+                              .map((h) => `<th class="table-header">${h}</th>`)
+                              .join("")}</tr>
+                            ${data
+                              .map(
+                                (row) => `
+                                <tr>${row
+                                  .map(
+                                    (cell) =>
+                                      `<td class="table-content">${cell}</td>`
+                                  )
+                                  .join("")}</tr>
+                            `
+                              )
+                              .join("")}
+                        `;
       }
 
       function updatePhotos() {
@@ -372,8 +364,10 @@
         photoSection.innerHTML = photos
           .map(
             (photo, i) => `
-                <img src="${photo}" alt="${currentTab} photo ${i + 1}">
-            `
+                            <img src="${photo}" alt="${currentTab} photo ${
+              i + 1
+            }">
+                        `
           )
           .join("");
       }

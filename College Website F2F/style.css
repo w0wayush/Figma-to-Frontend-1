@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
@@ -19,7 +25,6 @@ body {
   display: flex;
   gap: 15px;
   margin-bottom: 25px;
-  /* background-color: #00b2ce; */
   background-color: white;
   padding: 12px;
   border-radius: 8px;
@@ -86,12 +91,13 @@ td:hover {
 
 .photos {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 15px;
   margin-top: 20px;
 }
 
 .photo-container {
+  position: relative;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
@@ -99,14 +105,14 @@ td:hover {
 }
 
 .photo-container:hover {
-  transform: scale(1.03);
+  transform: scale(1.05);
 }
 
 .photo-container img {
   width: 100%;
   height: auto;
   object-fit: cover;
-  border-radius: 12px;
+  display: block;
 }
 
 h2,
@@ -124,4 +130,12 @@ h2 {
 h3 {
   font-size: 1.5rem;
   margin-bottom: 15px;
+}
+
+.table-header {
+  text-align: center;
+}
+
+.table-content:nth-child(1) {
+  text-align: center;
 }
