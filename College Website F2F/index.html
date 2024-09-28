@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Showcase</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 20px;
+        box-sizing: border-box;
+        background-color: #f0f4f8;
+        color: #333;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .navbar {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+        background-color: #e9ecef;
+        padding: 10px;
+        border-radius: 5px;
+      }
+      .navbar button {
+        padding: 10px 15px;
+        cursor: pointer;
+        background-color: #f8f9fa;
+        border: none;
+        border-radius: 5px;
+        transition: background-color 0.3s, color 0.3s;
+      }
+      .navbar button:hover {
+        background-color: #00b2ce;
+        color: white;
+      }
+      .year-selection {
+        margin-bottom: 20px;
+      }
+      .year-group {
+        display: inline-block;
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
+      .year-group select {
+        padding: 5px;
+        border-radius: 4px;
+        border: 1px solid #ced4da;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+      }
+      th,
+      td {
+        border: 1px solid #dee2e6;
+        padding: 12px;
+        text-align: left;
+      }
+      th {
+        background-color: #e9ecef;
+        font-weight: bold;
+      }
+      .photos {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+      .photo-container {
+        overflow: hidden;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .photos img {
+        width: 100%;
+        height: 50%;
+        border-radius: 20px;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+      .photos img:hover {
+        transform: scale(1.02);
+      }
+      .active {
+        background-color: #00b2ce !important;
+        color: white !important;
+      }
+      h2,
+      h3 {
+        color: #343a40;
+        margin-top: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar">
+        <button onclick="changeTab('MoUs')" class="active">MoU's</button>
+        <button onclick="changeTab('IndustrialVisits')">
+          Industrial Visits
+        </button>
+        <button onclick="changeTab('ExpertLectures')">
+          Expert Lectures from Industry
+        </button>
+      </div>
+
+      <div class="year-selection">
+        <div class="year-group">
+          <select id="yearSelect" onchange="selectYear(this.value)">
+            <option value="2024">2024</option>
+            <option value="2023-2022">2023-2022</option>
+            <option value="2021-2020">2021-2020</option>
+            <option value="2019-2018">2019-2018</option>
+            <option value="2017-2016">2017-2016</option>
+            <option value="2015-2014">2015-2014</option>
+            <option value="2013-2012">2013-2012</option>
+          </select>
+        </div>
+      </div>
+
+      <h2 id="contentTitle"></h2>
+      <table id="contentTable"></table>
+
+      <h3>Event Photos</h3>
+      <div class="photos" id="photoSection"></div>
+    </div>
+
+    <script>
+      let currentTab = "MoUs";
+      let selectedYear = "2024";
+
+      const eventData = {
+        MoUs: {
+          2024: {
+            tableData: [
+              ["Company A", "Project X", "Ongoing"],
+              ["University B", "Research Y", "Completed"],
+              ["Institute C", "Collaboration Z", "Planned"],
+            ],
+            photos: [
+              "./assets/mou1.jpg",
+              "./assets/mou2.jpg",
+              "./assets/mou3.jpg",
+              "./assets/mou1.jpg",
+              "./assets/mou2.jpg",
+              "./assets/mou3.jpg",
+            ],
+          },
+          "2023-2022": {
+            tableData: [
+              ["Company D", "Initiative M", "Completed"],
+              ["Organization E", "Program N", "Ongoing"],
+            ],
+            photos: [
+              "./assets/mou4.jpg",
+              "./assets/mou5.jpg",
+              "./assets/mou3.jpg",
+              "./assets/mou1.jpg",
+              "./assets/mou3.jpg",
+              "./assets/mou1.jpg",
+            ],
+          },
+          "2021-2020": {
+            tableData: [
+              ["Institute F", "Project Q", "Completed"],
+              ["Company G", "Innovation P", "Ongoing"],
+            ],
+            photos: ["./assets/mou6.jpg", "./assets/mou1.jpg"],
+          },
+          "2019-2018": {
+            tableData: [
+              ["University H", "Study K", "Completed"],
+              ["Company I", "Development L", "Planned"],
+            ],
+            photos: ["./assets/mou2.jpg", "./assets/mou3.jpg"],
+          },
+          "2017-2016": {
+            tableData: [
+              ["Institute J", "Collaboration R", "Ongoing"],
+              ["Company K", "Project T", "Completed"],
+            ],
+            photos: ["./assets/mou4.jpg", "./assets/mou5.jpg"],
+          },
+          "2015-2014": {
+            tableData: [
+              ["University L", "Research U", "Completed"],
+              ["Company M", "Initiative V", "Ongoing"],
+            ],
+            photos: ["./assets/mou6.jpg", "./assets/mou1.jpg"],
+          },
+          "2013-2012": {
+            tableData: [
+              ["Company N", "Development W", "Completed"],
+              ["Institute O", "Collaboration X", "Planned"],
+            ],
+            photos: ["./assets/mou2.jpg", "./assets/mou3.jpg"],
+          },
+        },
+        IndustrialVisits: {
+          2024: {
+            tableData: [
+              ["Factory X", "15 Jan 2024", "30 students"],
+              ["Company Y", "22 Feb 2024", "25 students"],
+            ],
+            photos: ["./assets/iv1.jpg", "./assets/iv2.jpg"],
+          },
+          "2023-2022": {
+            tableData: [
+              ["Plant A", "10 Mar 2023", "40 students"],
+              ["Factory B", "18 Sep 2022", "35 students"],
+            ],
+            photos: ["./assets/iv3.jpg", "./assets/iv4.jpg"],
+          },
+          "2021-2020": {
+            tableData: [
+              ["Company C", "12 Jun 2021", "28 students"],
+              ["Factory D", "19 Nov 2020", "33 students"],
+            ],
+            photos: ["./assets/iv5.jpg", "./assets/iv6.jpg"],
+          },
+          "2019-2018": {
+            tableData: [
+              ["Plant E", "3 Jul 2019", "22 students"],
+              ["Factory F", "25 Aug 2018", "30 students"],
+            ],
+            photos: ["./assets/iv1.jpg", "./assets/iv2.jpg"],
+          },
+          "2017-2016": {
+            tableData: [
+              ["Factory G", "15 Sep 2017", "36 students"],
+              ["Company H", "27 Oct 2016", "28 students"],
+            ],
+            photos: ["./assets/iv3.jpg", "./assets/iv4.jpg"],
+          },
+          "2015-2014": {
+            tableData: [
+              ["Plant I", "6 Apr 2015", "32 students"],
+              ["Factory J", "20 May 2014", "29 students"],
+            ],
+            photos: ["./assets/iv5.jpg", "./assets/iv6.jpg"],
+          },
+          "2013-2012": {
+            tableData: [
+              ["Company K", "17 Jun 2013", "35 students"],
+              ["Factory L", "10 Dec 2012", "30 students"],
+            ],
+            photos: ["./assets/iv1.jpg", "./assets/iv2.jpg"],
+          },
+        },
+        ExpertLectures: {
+          2024: {
+            tableData: [
+              ["Dr. Smith", "AI in Industry", "10 Mar 2024"],
+              ["Prof. Johnson", "Future of IoT", "5 Apr 2024"],
+            ],
+            photos: ["./assets/exl1.jpg", "./assets/exl2.jpg"],
+          },
+          "2023-2022": {
+            tableData: [
+              ["Dr. Brown", "Blockchain Revolution", "18 Feb 2023"],
+              ["Prof. White", "Cybersecurity in 2022", "20 May 2022"],
+            ],
+            photos: ["./assets/exl3.jpg", "./assets/exl4.jpg"],
+          },
+          "2021-2020": {
+            tableData: [
+              ["Dr. Green", "Machine Learning Trends", "22 Jul 2021"],
+              ["Prof. Blue", "Data Science Applications", "16 Oct 2020"],
+            ],
+            photos: ["./assets/exl5.jpg", "./assets/exl6.jpg"],
+          },
+          "2019-2018": {
+            tableData: [
+              ["Dr. Black", "Quantum Computing", "10 Nov 2019"],
+              ["Prof. Grey", "Advances in AI", "3 Dec 2018"],
+            ],
+            photos: ["./assets/exl1.jpg", "./assets/exl2.jpg"],
+          },
+          "2017-2016": {
+            tableData: [
+              ["Dr. Violet", "Cloud Computing", "15 Jun 2017"],
+              ["Prof. Pink", "Big Data Analytics", "8 Mar 2016"],
+            ],
+            photos: ["./assets/exl3.jpg", "./assets/exl4.jpg"],
+          },
+          "2015-2014": {
+            tableData: [
+              ["Dr. Red", "Robotics in Manufacturing", "12 Oct 2015"],
+              ["Prof. Yellow", "Digital Transformation", "25 Apr 2014"],
+            ],
+            photos: ["./assets/exl5.jpg", "./assets/exl6.jpg"],
+          },
+          "2013-2012": {
+            tableData: [
+              ["Dr. Orange", "Internet of Things", "19 Feb 2013"],
+              ["Prof. Cyan", "Autonomous Systems", "30 Jun 2012"],
+            ],
+            photos: ["./assets/exl1.jpg", "./assets/exl2.jpg"],
+          },
+        },
+      };
+
+      function changeTab(tab) {
+        currentTab = tab;
+        document
+          .querySelectorAll(".navbar button")
+          .forEach((btn) => btn.classList.remove("active"));
+        document
+          .querySelector(
+            `.navbar button:nth-child(${
+              ["MoUs", "IndustrialVisits", "ExpertLectures"].indexOf(tab) + 1
+            })`
+          )
+          .classList.add("active");
+        updateContent();
+      }
+
+      function selectYear(year) {
+        selectedYear = year;
+        updateContent();
+      }
+
+      function updateContent() {
+        document.getElementById(
+          "contentTitle"
+        ).textContent = `${currentTab} for ${selectedYear}`;
+        updateTable();
+        updatePhotos();
+      }
+
+      function updateTable() {
+        const table = document.getElementById("contentTable");
+        const data = eventData[currentTab][selectedYear].tableData;
+
+        let headers;
+        switch (currentTab) {
+          case "MoUs":
+            headers = ["Organization", "Project", "Status"];
+            break;
+          case "IndustrialVisits":
+            headers = ["Company", "Date", "Participants"];
+            break;
+          case "ExpertLectures":
+            headers = ["Speaker", "Topic", "Date"];
+            break;
+        }
+
+        table.innerHTML = `
+                <tr>${headers.map((h) => `<th>${h}</th>`).join("")}</tr>
+                ${data
+                  .map(
+                    (row) => `
+                    <tr>${row.map((cell) => `<td>${cell}</td>`).join("")}</tr>
+                `
+                  )
+                  .join("")}
+            `;
+      }
+
+      function updatePhotos() {
+        const photoSection = document.getElementById("photoSection");
+        const photos = eventData[currentTab][selectedYear].photos;
+        photoSection.innerHTML = photos
+          .map(
+            (photo, i) => `
+                <img src="${photo}" alt="${currentTab} photo ${i + 1}">
+            `
+          )
+          .join("");
+      }
+
+      updateContent();
+    </script>
+  </body>
+</html>

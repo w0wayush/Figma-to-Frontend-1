@@ -1,0 +1,127 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #f4faff;
+  color: #333;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+  /* background-color: #00b2ce; */
+  background-color: white;
+  padding: 12px;
+  border-radius: 8px;
+  justify-content: center;
+}
+
+.navbar button {
+  padding: 12px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  background: #ffffff;
+  color: #00b2ce;
+  border: 2px solid #00b2ce;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+}
+
+.navbar button.active,
+.navbar button:hover {
+  background: #00b2ce;
+  color: white;
+}
+
+.year-selection {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.year-group select {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+  background-color: #ffffff;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  font-size: 1rem;
+  text-align: left;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+th {
+  background-color: #00b2ce;
+  color: #ffffff;
+  padding: 15px;
+  font-weight: bold;
+  border: none;
+}
+
+td {
+  padding: 15px;
+  border: none;
+  border-bottom: 1px solid #f1f3f5;
+}
+
+td:hover {
+  background-color: #f1f8fa;
+}
+
+.photos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.photo-container {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.photo-container:hover {
+  transform: scale(1.03);
+}
+
+.photo-container img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+h2,
+h3 {
+  text-align: center;
+  color: #333;
+  margin-top: 0;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}

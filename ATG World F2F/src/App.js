@@ -14,6 +14,6 @@ function App() {
       <PostSection />
     </div>
   );
-}
+} 
 
 export default App;
