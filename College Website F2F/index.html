@@ -1,51 +1,891 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link rel="stylesheet" href="style.css" />
+    <!-- <link rel="stylesheet" href="style.css" /> -->
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Event Showcase</title>
   </head>
   <body>
-    <div class="container">
-      <header class="department-header">
-        <div class="header-content">
-          <h1>Computer Department</h1>
-          <h3>Industry Interactions</h3>
+    <div
+      style="
+        font-family: Arial, sans-serif;
+        max-width: 1200px;
+        margin: 0 auto;
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      "
+    >
+      <header
+        style="
+          background: #00b2ce;
+          color: white;
+          padding: 3rem 2rem;
+          text-align: center;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+          margin-bottom: 1rem;
+          position: relative;
+          overflow: hidden;
+        "
+      >
+        <div
+          style="
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+          "
+        >
+          <h1
+            style="
+              font-size: 3rem;
+              margin-bottom: 0.5rem;
+              letter-spacing: 2px;
+              text-transform: uppercase;
+              animation: fadeInDown 0.5s ease-out;
+              text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            "
+          >
+            Computer Department
+          </h1>
+          <h3
+            style="
+              font-size: 1.8rem;
+              font-weight: 400;
+              margin-top: 0;
+              opacity: 0.9;
+              animation: fadeInUp 0.5s ease-out 0.2s both;
+            "
+          >
+            Industry Interactions
+          </h3>
         </div>
       </header>
-      <div class="navbar">
-        <button onclick="changeTab('MoUs')" class="active">MoU's</button>
-        <button onclick="changeTab('IndustrialVisits')">
+      <div
+        style="
+          display: flex;
+          gap: 15px;
+          margin-bottom: 25px;
+          background-color: white;
+          padding: 12px;
+          border-radius: 8px;
+          justify-content: center;
+        "
+      >
+        <button
+          onclick="changeTab('MoUs')"
+          style="
+            padding: 12px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            background: #ffffff;
+            color: #00b2ce;
+            border: 2px solid #00b2ce;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+          "
+          onmouseover="this.style.backgroundColor='#00b2ce'; this.style.color='#ffffff';"
+          onmouseout="this.style.backgroundColor='#ffffff'; this.style.color='#00b2ce';"
+        >
+          MoU's
+        </button>
+        <button
+          onclick="changeTab('IndustrialVisits')"
+          style="
+            padding: 12px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            background: #ffffff;
+            color: #00b2ce;
+            border: 2px solid #00b2ce;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+          "
+          onmouseover="this.style.backgroundColor='#00b2ce'; this.style.color='#ffffff';"
+          onmouseout="this.style.backgroundColor='#ffffff'; this.style.color='#00b2ce';"
+        >
           Industrial Visits
         </button>
-        <button onclick="changeTab('ExpertLectures')">
+        <button
+          onclick="changeTab('ExpertLectures')"
+          style="
+            padding: 12px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            background: #ffffff;
+            color: #00b2ce;
+            border: 2px solid #00b2ce;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+          "
+          onmouseover="this.style.backgroundColor='#00b2ce'; this.style.color='#ffffff';"
+          onmouseout="this.style.backgroundColor='#ffffff'; this.style.color='#00b2ce';"
+        >
           Expert Lectures from Industry
         </button>
       </div>
-
-      <div class="year-selection">
-        <div class="year-group">
-          <select id="yearSelect" onchange="selectYear(this.value)">
+      <div style="display: flex; justify-content: center; margin-bottom: 25px">
+        <div>
+          <select
+            id="yearSelect"
+            onchange="selectYear(this.value)"
+            style="
+              padding: 10px;
+              font-size: 1rem;
+              border-radius: 8px;
+              border: 1px solid #ced4da;
+              background-color: #ffffff;
+            "
+          >
             <option value="2024">2024</option>
-            <option value="2023-2022">2023-2022</option>
-            <option value="2021-2020">2021-2020</option>
-            <option value="2019-2018">2019-2018</option>
-            <option value="2017-2016">2017-2016</option>
-            <option value="2015-2014">2015-2014</option>
-            <option value="2013-2012">2013-2012</option>
+            <option value="2022-2023">2022-2023</option>
+            <option value="2020-2021">2020-2021</option>
+            <option value="2018-2019">2018-2019</option>
+            <option value="2016-2017">2016-2017</option>
+            <!-- <option value="2015-2014">2015-2014</option>
+            <option value="2013-2012">2013-2012</option> -->
           </select>
         </div>
       </div>
-
-      <h2 id="contentTitle"></h2>
-      <table id="contentTable"></table>
-
-      <h3>Event Photos</h3>
-      <div class="photos" id="photoSection"></div>
+      <h2
+        id="contentTitle"
+        style="
+          text-align: center;
+          color: #333;
+          margin-top: 0;
+          font-size: 2rem;
+          margin-bottom: 20px;
+        "
+      ></h2>
+      <table
+        id="contentTable"
+        style="
+          width: 100%;
+          border-collapse: collapse;
+          margin-bottom: 20px;
+          font-size: 1rem;
+          text-align: left;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        "
+      ></table>
+      <h3
+        style="
+          text-align: center;
+          color: #333;
+          margin-top: 0;
+          font-size: 1.5rem;
+          margin-bottom: 15px;
+        "
+      >
+        Event Photos
+      </h3>
+      <div
+        id="photoSection"
+        style="
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+          gap: 20px;
+          margin-top: 20px;
+        "
+      ></div>
     </div>
+    <script>
+      let currentTab = "MoUs";
+      let selectedYear = "2024";
 
-    <script src="index.js"></script>
+      const eventData = {
+        MoUs: {
+          2024: {
+            tableData: [
+              [
+                "1",
+                "EARLYRISE Pvt,Ltd, Indiranagar, Banglore-560038 ",
+                "3 Years: 23/12/2019 to 22/12/2022",
+                "To Explore needs for creation of large reservoir of highly qualified work force in all fields related to computer science and technology.",
+              ],
+              [
+                "2",
+                "EARLYRISE Pvt,Ltd, Indiranagar, Banglore-560038 ",
+                "3 Years: 23/12/2019 to 22/12/2022",
+                "To Explore needs for creation of large reservoir of highly qualified work force in all fields related to computer science and technology.",
+              ],
+              [
+                "3",
+                "EARLYRISE Pvt,Ltd, Indiranagar, Banglore-560038 ",
+                "3 Years: 23/12/2019 to 22/12/2022",
+                "To Explore needs for creation of large reservoir of highly qualified work force in all fields related to computer science and technology.",
+              ],
+              [
+                "4",
+                "EARLYRISE Pvt,Ltd, Indiranagar, Banglore-560038 ",
+                "3 Years: 23/12/2019 to 22/12/2022",
+                "To Explore needs for creation of large reservoir of highly qualified work force in all fields related to computer science and technology.",
+              ],
+            ],
+            photos: [
+              {
+                url: "./assets/mou5.jpg",
+                caption: "MoU signing ceremony with Company A",
+              },
+              {
+                url: "./assets/mou3.jpg",
+                caption: "Handshake after MoU finalization",
+              },
+              {
+                url: "./assets/mou3.jpg",
+                caption: "Team photo with Company B representatives",
+              },
+              { url: "./assets/mou5.jpg", caption: "MoU document showcase" },
+              {
+                url: "./assets/mou5.jpg",
+                caption: "University officials at MoU event",
+              },
+              {
+                url: "./assets/mou3.jpg",
+                caption: "Industry partner presentation",
+              },
+            ],
+          },
+          "2022-2023": {
+            tableData: [
+              [
+                "1",
+                "EARLYRISE Pvt,Ltd, Indiranagar, Banglore-560038 ",
+                "3 Years: 23/12/2019 to 22/12/2022",
+                "To Explore needs for creation of large reservoir of highly qualified work force in all fields related to computer science and technology.",
+              ],
+              [
+                "2",
+                "EARLYRISE Pvt,Ltd, Indiranagar, Banglore-560038 ",
+                "3 Years: 23/12/2019 to 22/12/2022",
+                "To Explore needs for creation of large reservoir of highly qualified work force in all fields related to computer science and technology.",
+              ],
+            ],
+            photos: [
+              {
+                url: "./assets/mou8.jpg",
+                caption: "Industry partner presentation",
+              },
+              {
+                url: "./assets/mou5.jpg",
+                caption: "Industry partner presentation",
+              },
+              {
+                url: "./assets/mou3.jpg",
+                caption: "Industry partner presentation",
+              },
+              {
+                url: "./assets/mou1.jpg",
+                caption: "Industry partner presentation",
+              },
+              {
+                url: "./assets/mou3.jpg",
+                caption: "Industry partner presentation",
+              },
+              {
+                url: "./assets/mou1.jpg",
+                caption: "Industry partner presentation",
+              },
+            ],
+          },
+          "2020-2021": {
+            tableData: [
+              [
+                "1",
+                "EARLYRISE Pvt,Ltd, Indiranagar, Banglore-560038 ",
+                "3 Years: 23/12/2019 to 22/12/2022",
+                "To Explore needs for creation of large reservoir of highly qualified work force in all fields related to computer science and technology.",
+              ],
+              [
+                "2",
+                "EARLYRISE Pvt,Ltd, Indiranagar, Banglore-560038 ",
+                "3 Years: 23/12/2019 to 22/12/2022",
+                "To Explore needs for creation of large reservoir of highly qualified work force in all fields related to computer science and technology.",
+              ],
+              [
+                "3",
+                "EARLYRISE Pvt,Ltd, Indiranagar, Banglore-560038 ",
+                "3 Years: 23/12/2019 to 22/12/2022",
+                "To Explore needs for creation of large reservoir of highly qualified work force in all fields related to computer science and technology.",
+              ],
+            ],
+            photos: [
+              {
+                url: "./assets/mou7.jpg",
+                caption: "Industry partner presentation",
+              },
+              {
+                url: "./assets/mou1.jpg",
+                caption: "Industry partner presentation",
+              },
+            ],
+          },
+          "2018-2019": {
+            tableData: [
+              [
+                "1",
+                "EARLYRISE Pvt,Ltd, Indiranagar, Banglore-560038 ",
+                "3 Years: 23/12/2019 to 22/12/2022",
+                "To Explore needs for creation of large reservoir of highly qualified work force in all fields related to computer science and technology.",
+              ],
+              [
+                "2",
+                "EARLYRISE Pvt,Ltd, Indiranagar, Banglore-560038 ",
+                "3 Years: 23/12/2019 to 22/12/2022",
+                "To Explore needs for creation of large reservoir of highly qualified work force in all fields related to computer science and technology.",
+              ],
+            ],
+            photos: [
+              {
+                url: "./assets/mou7.jpg",
+                caption: "Industry partner presentation",
+              },
+              {
+                url: "./assets/mou3.jpg",
+                caption: "Industry partner presentation",
+              },
+            ],
+          },
+          "2016-2017": {
+            tableData: [
+              [
+                "1",
+                "EARLYRISE Pvt,Ltd, Indiranagar, Banglore-560038 ",
+                "3 Years: 23/12/2019 to 22/12/2022",
+                "To Explore needs for creation of large reservoir of highly qualified work force in all fields related to computer science and technology.",
+              ],
+              [
+                "2",
+                "EARLYRISE Pvt,Ltd, Indiranagar, Banglore-560038 ",
+                "3 Years: 23/12/2019 to 22/12/2022",
+                "To Explore needs for creation of large reservoir of highly qualified work force in all fields related to computer science and technology.",
+              ],
+              [
+                "3",
+                "EARLYRISE Pvt,Ltd, Indiranagar, Banglore-560038 ",
+                "3 Years: 23/12/2019 to 22/12/2022",
+                "To Explore needs for creation of large reservoir of highly qualified work force in all fields related to computer science and technology.",
+              ],
+              [
+                "4",
+                "EARLYRISE Pvt,Ltd, Indiranagar, Banglore-560038 ",
+                "3 Years: 23/12/2019 to 22/12/2022",
+                "To Explore needs for creation of large reservoir of highly qualified work force in all fields related to computer science and technology.",
+              ],
+            ],
+            photos: [
+              {
+                url: "./assets/mou8.jpg",
+                caption: "Industry partner presentation",
+              },
+              {
+                url: "./assets/mou5.jpg",
+                caption: "Industry partner presentation",
+              },
+            ],
+          },
+        },
+        IndustrialVisits: {
+          2024: {
+            tableData: [
+              [
+                "1.",
+                "Cognizant, Hinjewadi",
+                "29/01/2020",
+                "17",
+                "How Cognizant perform CSR Activity to contribute towards the society.",
+              ],
+              [
+                "2.",
+                "Cognizant, Hinjewadi",
+                "29/01/2020",
+                "17",
+                "How Cognizant perform CSR Activity to contribute towards the society.",
+              ],
+            ],
+            photos: [
+              {
+                url: "./assets/iv9.jpg",
+                caption: "Students visiting Cognizant facility",
+              },
+              {
+                url: "./assets/iv2.jpg",
+                caption: "Industrial visit group photo",
+              },
+            ],
+          },
+          "2022-2023": {
+            tableData: [
+              [
+                "1.",
+                "Cognizant, Hinjewadi",
+                "29/01/2020",
+                "17",
+                "How Cognizant perform CSR Activity to contribute towards the society.",
+              ],
+              [
+                "2.",
+                "Cognizant, Hinjewadi",
+                "29/01/2020",
+                "17",
+                "How Cognizant perform CSR Activity to contribute towards the society.",
+              ],
+              [
+                "1.",
+                "Cognizant, Hinjewadi",
+                "29/01/2020",
+                "17",
+                "How Cognizant perform CSR Activity to contribute towards the society.",
+              ],
+              [
+                "2.",
+                "Cognizant, Hinjewadi",
+                "29/01/2020",
+                "17",
+                "How Cognizant perform CSR Activity to contribute towards the society.",
+              ],
+            ],
+            photos: [
+              {
+                url: "./assets/iv3.jpg",
+                caption: "Industrial visit group photo",
+              },
+              {
+                url: "./assets/iv4.jpg",
+                caption: "Industrial visit group photo",
+              },
+            ],
+          },
+          "2020-2021": {
+            tableData: [
+              [
+                "1.",
+                "Cognizant, Hinjewadi",
+                "29/01/2020",
+                "17",
+                "How Cognizant perform CSR Activity to contribute towards the society.",
+              ],
+              [
+                "2.",
+                "Cognizant, Hinjewadi",
+                "29/01/2020",
+                "17",
+                "How Cognizant perform CSR Activity to contribute towards the society.",
+              ],
+              [
+                "1.",
+                "Cognizant, Hinjewadi",
+                "29/01/2020",
+                "17",
+                "How Cognizant perform CSR Activity to contribute towards the society.",
+              ],
+            ],
+            photos: [
+              {
+                url: "./assets/iv7.jpg",
+                caption: "Industrial visit group photo",
+              },
+              {
+                url: "./assets/iv8.jpg",
+                caption: "Industrial visit group photo",
+              },
+            ],
+          },
+          "2018-2019": {
+            tableData: [
+              [
+                "1.",
+                "Cognizant, Hinjewadi",
+                "29/01/2020",
+                "17",
+                "How Cognizant perform CSR Activity to contribute towards the society.",
+              ],
+              [
+                "2.",
+                "Cognizant, Hinjewadi",
+                "29/01/2020",
+                "17",
+                "How Cognizant perform CSR Activity to contribute towards the society.",
+              ],
+            ],
+            photos: [
+              {
+                url: "./assets/iv7.jpg",
+                caption: "Industrial visit group photo",
+              },
+              {
+                url: "./assets/iv2.jpg",
+                caption: "Industrial visit group photo",
+              },
+            ],
+          },
+          "2016-2017": {
+            tableData: [
+              [
+                "1.",
+                "Cognizant, Hinjewadi",
+                "29/01/2020",
+                "17",
+                "How Cognizant perform CSR Activity to contribute towards the society.",
+              ],
+              [
+                "2.",
+                "Cognizant, Hinjewadi",
+                "29/01/2020",
+                "17",
+                "How Cognizant perform CSR Activity to contribute towards the society.",
+              ],
+              [
+                "1.",
+                "Cognizant, Hinjewadi",
+                "29/01/2020",
+                "17",
+                "How Cognizant perform CSR Activity to contribute towards the society.",
+              ],
+              [
+                "2.",
+                "Cognizant, Hinjewadi",
+                "29/01/2020",
+                "17",
+                "How Cognizant perform CSR Activity to contribute towards the society.",
+              ],
+            ],
+            photos: [
+              {
+                url: "./assets/iv3.jpg",
+                caption: "Industrial visit group photo",
+              },
+              {
+                url: "./assets/iv4.jpg",
+                caption: "Industrial visit group photo",
+              },
+            ],
+          },
+        },
+        ExpertLectures: {
+          2024: {
+            tableData: [
+              [
+                "1.",
+                "I became an Engineer. Are you going to be One?",
+                "Pavneet Singh",
+                "Placement",
+                "06/06/2020 to 06/06/2020",
+                "70",
+              ],
+              [
+                "2.",
+                "I became an Engineer. Are you going to be One?",
+                "Pavneet Singh",
+                "Placement",
+                "06/06/2020 to 06/06/2020",
+                "70",
+              ],
+            ],
+            photos: [
+              {
+                url: "./assets/exl9.jpg",
+                caption: "Expert lecture by Pavneet Singh",
+              },
+              {
+                url: "./assets/exl2.jpg",
+                caption: "Students attending the lecture",
+              },
+            ],
+          },
+          "2022-2023": {
+            tableData: [
+              [
+                "1.",
+                "I became an Engineer. Are you going to be One?",
+                "Pavneet Singh",
+                "Placement",
+                "06/06/2020 to 06/06/2020",
+                "70",
+              ],
+              [
+                "2.",
+                "I became an Engineer. Are you going to be One?",
+                "Pavneet Singh",
+                "Placement",
+                "06/06/2020 to 06/06/2020",
+                "70",
+              ],
+              [
+                "1.",
+                "I became an Engineer. Are you going to be One?",
+                "Pavneet Singh",
+                "Placement",
+                "06/06/2020 to 06/06/2020",
+                "70",
+              ],
+              [
+                "2.",
+                "I became an Engineer. Are you going to be One?",
+                "Pavneet Singh",
+                "Placement",
+                "06/06/2020 to 06/06/2020",
+                "70",
+              ],
+            ],
+            photos: [
+              {
+                url: "./assets/exl8.jpg",
+                caption: "Students attending the lecture",
+              },
+              {
+                url: "./assets/exl9.jpg",
+                caption: "Students attending the lecture",
+              },
+            ],
+          },
+          "2020-2021": {
+            tableData: [
+              [
+                "1.",
+                "I became an Engineer. Are you going to be One?",
+                "Pavneet Singh",
+                "Placement",
+                "06/06/2020 to 06/06/2020",
+                "70",
+              ],
+              [
+                "2.",
+                "I became an Engineer. Are you going to be One?",
+                "Pavneet Singh",
+                "Placement",
+                "06/06/2020 to 06/06/2020",
+                "70",
+              ],
+            ],
+            photos: [
+              {
+                url: "./assets/exl5.jpg",
+                caption: "Students attending the lecture",
+              },
+              {
+                url: "./assets/exl10.jpg",
+                caption: "Students attending the lecture",
+              },
+            ],
+          },
+          "2018-2019": {
+            tableData: [
+              [
+                "1.",
+                "I became an Engineer. Are you going to be One?",
+                "Pavneet Singh",
+                "Placement",
+                "06/06/2020 to 06/06/2020",
+                "70",
+              ],
+              [
+                "2.",
+                "I became an Engineer. Are you going to be One?",
+                "Pavneet Singh",
+                "Placement",
+                "06/06/2020 to 06/06/2020",
+                "70",
+              ],
+              [
+                "1.",
+                "I became an Engineer. Are you going to be One?",
+                "Pavneet Singh",
+                "Placement",
+                "06/06/2020 to 06/06/2020",
+                "70",
+              ],
+            ],
+            photos: [
+              {
+                url: "./assets/exl9.jpg",
+                caption: "Students attending the lecture",
+              },
+              {
+                url: "./assets/exl2.jpg",
+                caption: "Students attending the lecture",
+              },
+            ],
+          },
+          "2016-2017": {
+            tableData: [
+              [
+                "1.",
+                "I became an Engineer. Are you going to be One?",
+                "Pavneet Singh",
+                "Placement",
+                "06/06/2020 to 06/06/2020",
+                "70",
+              ],
+              [
+                "2.",
+                "I became an Engineer. Are you going to be One?",
+                "Pavneet Singh",
+                "Placement",
+                "06/06/2020 to 06/06/2020",
+                "70",
+              ],
+            ],
+            photos: [
+              {
+                url: "./assets/exl8.jpg",
+                caption: "Students attending the lecture",
+              },
+              {
+                url: "./assets/exl9.jpg",
+                caption: "Students attending the lecture",
+              },
+            ],
+          },
+        },
+      };
+
+      function changeTab(tab) {
+        currentTab = tab;
+        document.querySelectorAll("button").forEach((btn) => {
+          btn.style.background = "#ffffff";
+          btn.style.color = "#00b2ce";
+        });
+        const activeButton = Array.from(
+          document.querySelectorAll("button")
+        ).find((btn) => btn.textContent.trim() === tab);
+        if (activeButton) {
+          activeButton.style.background = "#00b2ce";
+          activeButton.style.color = "white";
+        }
+        updateContent();
+      }
+
+      function selectYear(year) {
+        selectedYear = year;
+        updateContent();
+      }
+
+      function updateContent() {
+        const contentTitle = document.getElementById("contentTitle");
+        let formattedTab = currentTab;
+
+        if (currentTab === "IndustrialVisits") {
+          formattedTab = "Industrial Visits";
+        } else if (currentTab === "ExpertLectures") {
+          formattedTab = "Expert Lectures";
+        }
+
+        contentTitle.textContent = `${formattedTab} for ${selectedYear}`;
+        contentTitle.style.marginBottom = "30px"; // Add space below the title
+        updateTable();
+        updatePhotos();
+      }
+
+      function updateTable() {
+        const table = document.getElementById("contentTable");
+        table.style.marginTop = "30px"; // Add space above the table
+        const data = eventData[currentTab][selectedYear].tableData;
+        let headers;
+        switch (currentTab) {
+          case "MoUs":
+            headers = [
+              "No. of Live MOUs",
+              "Name of Company/Organization",
+              "Duration",
+              "Objectives",
+            ];
+            break;
+          case "IndustrialVisits":
+            headers = [
+              "Sr. No.",
+              "Name of the Industry",
+              "Date of Visit",
+              "Number of Students Visited",
+              "Objectives of the Visit",
+            ];
+            break;
+          case "ExpertLectures":
+            headers = [
+              "Sr. No.",
+              "Title",
+              "Resource Person Details",
+              "Category",
+              "Date",
+              "No. of Participants",
+            ];
+            break;
+        }
+        table.innerHTML = `
+        <tr>${headers
+          .map(
+            (h) =>
+              `<th style="background-color: #00b2ce; color: #ffffff; padding: 15px; font-weight: bold; border: none; text-align: center;">${h}</th>`
+          )
+          .join("")}</tr>
+        ${data
+          .map(
+            (row) => `
+            <tr>${row
+              .map(
+                (cell, index) =>
+                  `<td style="padding: 15px; border: none; border-bottom: 1px solid #f1f3f5; ${
+                    index === 0 ? "text-align: center;" : ""
+                  }">${cell}</td>`
+              )
+              .join("")}</tr>
+        `
+          )
+          .join("")}
+      `;
+      }
+
+      function updatePhotos() {
+        const photoSection = document.getElementById("photoSection");
+        const photos = eventData[currentTab][selectedYear].photos;
+        photoSection.innerHTML = photos
+          .map(
+            (photo, i) => `
+         <div style="position: relative; border-radius: 12px; overflow: hidden; box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; aspect-ratio: 1 / 1;">
+          <img src="${photo.url}" alt="${currentTab} photo ${
+              i + 1
+            }" style="width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s ease;">
+          <div style="position: absolute; bottom: 0; left: 0; right: 0; background-color: rgba(0, 178, 206, 0.8); color: white; padding: 10px; transform: translateY(100%); transition: transform 0.3s ease;">${
+            photo.caption
+          }</div>
+        </div>
+      `
+          )
+          .join("");
+      }
+
+      updateContent();
+
+      document.addEventListener("mouseover", function (event) {
+        const photoContainer = event.target.closest(
+          'div[style*="position: relative"]'
+        );
+        if (photoContainer) {
+          const overlay = photoContainer.querySelector(
+            'div[style*="position: absolute"]'
+          );
+          if (overlay) {
+            overlay.style.transform = "translateY(0)";
+          }
+        }
+      });
+
+      document.addEventListener("mouseout", function (event) {
+        const photoContainer = event.target.closest(
+          'div[style*="position: relative"]'
+        );
+        if (photoContainer) {
+          const overlay = photoContainer.querySelector(
+            'div[style*="position: absolute"]'
+          );
+          if (overlay) {
+            overlay.style.transform = "translateY(100%)";
+          }
+        }
+      });
+    </script>
   </body>
 </html>
